@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinter)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -30,6 +31,7 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -50,6 +52,7 @@ android {
 }
 
 dependencies {
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
     detektPlugins(libs.detekt.rules.compose)
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
@@ -60,6 +63,15 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
     implementation(libs.core.splashscreen)
+    implementation(libs.navigation.compose)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    implementation(libs.hilt)
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.kotlinx.coroutines)
+    implementation(libs.kotlinx.datetime)
+    ksp(libs.room.compiler)
+    ksp(libs.hilt.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

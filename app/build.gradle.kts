@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinter)
+    alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
 }
@@ -37,11 +38,11 @@ android {
     }
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         compose = true
@@ -61,6 +62,7 @@ dependencies {
     detektPlugins(libs.detekt.rules.compose)
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.lifecycle.runtime.compose)
     implementation(libs.activity.compose)
     implementation(platform(libs.compose.bom))
     implementation(libs.ui)
@@ -75,8 +77,12 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     implementation(libs.kotlinx.coroutines)
     implementation(libs.kotlinx.datetime)
+    implementation(libs.compose.destinations)
+    implementation(libs.material.icons.extended)
+    implementation(libs.kotlinx.serialization)
     ksp(libs.room.compiler)
     ksp(libs.hilt.compiler)
+    ksp(libs.compose.destinations.ksp)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

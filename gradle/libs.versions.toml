@@ -21,7 +21,7 @@ kotlinx-serialization = "1.6.1"
 ksp = "1.9.20-1.0.14"
 lifecycle-runtime = "2.6.2"
 navigation-compose = "2.7.5"
-room = "2.6.0"
+room = "2.6.1"
 
 [libraries]
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
